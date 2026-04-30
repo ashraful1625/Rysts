@@ -1,0 +1,870 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-pink: #feecea;
+    --color-white: #fff;
+    --color-black: #333;
+    --color-text-pink: #ff7882;
+    --color-heart: #F61F1F;
+    --color-bg-letter: #fff8e4;
+    --color-border: #DACCBF;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background-color: var(--color-pink);
+}
+
+#wrapper {
+    position: relative;
+    min-height: 100vh;
+    background-color: transparent;
+    background-image:
+        linear-gradient(0deg, transparent 24%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 26%, transparent 27%, transparent 74%, rgba(255,255,255,1) 75%, rgba(255,255,255,1) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 26%, transparent 27%, transparent 74%, rgba(255,255,255,1) 75%, rgba(255,255,255,1) 76%, transparent 77%, transparent);
+    background-size: 80px 80px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* ===================== FLAGS ===================== */
+.flag__birthday {
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-200px);
+    animation: translateYFlag 1.5s 2s forwards;
+}
+
+@keyframes translateYFlag {
+    to { transform: translateY(-10px); }
+}
+
+.flag__birthday .flag__left {
+    transform: rotate(-10deg) translate(-20px, 30px);
+}
+
+.flag__birthday .flag__right {
+    transform: rotate(10deg) translate(20px, 30px) scaleX(-1);
+}
+
+/* ===================== CONTENT LAYOUT ===================== */
+.content {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding-top: 3rem;
+}
+
+.content .left,
+.content .right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .left {
+    width: 40%;
+    padding-left: 100px;
+}
+
+.content .right {
+    width: 60%;
+}
+
+/* ===================== BUTTON ===================== */
+.left .btn {
+    transform: scale(0);
+    animation: scaleCricle 2s 16s forwards ease-in-out;
+}
+
+#btn__letter {
+    position: relative;
+    margin-top: 30px;
+    background-color: var(--color-text-pink);
+    outline: none;
+    padding: 5px 15px;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 3px solid var(--color-black);
+    font-family: "Sriracha", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transform: scale(1);
+    transition: all .5s ease-in-out;
+}
+
+#btn__letter:active {
+    transform: scale(0.7);
+}
+
+#btn__letter i {
+    margin-left: 5px;
+}
+
+#btn__letter:hover {
+    border-color: var(--color-heart);
+    background-color: var(--color-heart);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#btn__letter:hover i {
+    animation: rotateHeart 1s infinite linear;
+}
+
+@keyframes rotateHeart {
+    0%, 50%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(12deg); }
+    75% { transform: rotate(-12deg); }
+}
+
+/* ===================== TITLE (Happy Birthday) ===================== */
+.title {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Titan One", sans-serif;
+    font-size: 3rem;
+    flex-direction: column;
+    perspective: 1000px;
+}
+
+.title .happy,
+.title .birthday {
+    position: relative;
+    text-shadow:
+        4px 4px var(--color-black),
+        -4px 4px var(--color-black),
+        4px -4px var(--color-black),
+        -4px -4px var(--color-black),
+        4px 8px 0 var(--color-black);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.title .happy { color: var(--color-white); }
+.title .birthday { color: var(--color-text-pink); }
+
+.title .happy span,
+.title .birthday span {
+    transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
+    animation: txtTranslateY .5s var(--t) forwards;
+}
+
+@keyframes txtTranslateY {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* ===================== HAT ===================== */
+.title .hat {
+    position: absolute;
+    right: 45px;
+    top: -350px;
+    transform: rotate(-40deg);
+    z-index: -1;
+    animation: topHat 4s 7s forwards ease;
+}
+
+@keyframes topHat {
+    20%, 30% {
+        top: -30px;
+        transform-origin: left;
+        transform: rotate(-40deg);
+    }
+    35%, 100% {
+        top: -30px;
+        transform: rotate(0deg);
+    }
+}
+
+/* ===================== DATE OF BIRTH ===================== */
+.date__of__birth,
+.name {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-text-pink);
+    border-radius: 50px;
+    margin-top: 20px;
+    font-family: "Sriracha", cursive;
+}
+
+.date__of__birth {
+    border: 3px solid var(--color-black);
+    position: relative;
+    transform: translateY(-100px);
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    width: 0px;
+    animation: dateOfBirth 5s 9s forwards;
+}
+
+@keyframes dateOfBirth {
+    20%, 40% {
+        width: 0px;
+        height: 0;
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+    }
+    45% {
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        height: 0px;
+    }
+    50%, 100% {
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        height: 50px;
+    }
+}
+
+.name {
+    position: absolute;
+    padding: 0px 40px;
+    bottom: -20px;
+    border: 3px solid var(--color-black);
+}
+
+.date__of__birth span,
+.name span {
+    font-weight: bold;
+    margin: 0px 40px;
+}
+
+.date__of__birth span { font-size: 1.2rem; }
+.name span { font-size: 1.7rem; }
+
+/* ===================== PROFILE IMAGE BOX ===================== */
+.right .box__account {
+    position: relative;
+    transform: translateY(700px);
+    animation: topBoxImage 8s 7s forwards ease-in;
+}
+
+@keyframes topBoxImage {
+    to { transform: translateY(0); }
+}
+
+.content .right .image {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 6px solid var(--color-black);
+}
+
+.content .right .image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ===================== ROTATING CIRCLE — DESKTOP ===================== */
+/* Sits to the right of the profile circle, vertically centered */
+.cricle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%) scale(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scaleCricleDesktop 3s 15s forwards ease-in-out;
+}
+
+@keyframes scaleCricleDesktop {
+    0%   { transform: translateY(-50%) scale(0); }
+    10%  { transform: translateY(-50%) scale(1.3); }
+    20%  { transform: translateY(-50%) scale(0.7); }
+    30%, 100% { transform: translateY(-50%) scale(1); }
+}
+
+@keyframes scaleCricle {
+    0%   { transform: scale(0); }
+    10%  { transform: scale(1.3); }
+    20%  { transform: scale(0.7); }
+    30%, 100% { transform: scale(1); }
+}
+
+.text__cricle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-text-pink);
+    border-radius: 50%;
+    border: 5px solid var(--color-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotateCricle 5s linear infinite;
+}
+
+@keyframes rotateCricle {
+    to { transform: rotate(360deg); }
+}
+
+.text__cricle span {
+    top: 0%;
+    left: 50%;
+    position: absolute;
+    color: var(--color-black);
+    transform: rotate(calc(var(--i) * 24deg));
+    transform-origin: 0 45px;
+    font-family: "Sriracha", cursive;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+/* ===================== HEARTS ===================== */
+.fa-heart {
+    color: var(--color-heart);
+    filter: drop-shadow(0 0 3px var(--color-heart));
+    animation: scaleHeart 1s infinite linear;
+}
+
+.cricle .fa-heart {
+    position: absolute;
+    transform: scale(0.85);
+}
+
+@keyframes scaleHeart {
+    50% { transform: scale(1.2); }
+}
+
+/* ===================== BALLOONS ===================== */
+.right .balloon_one {
+    position: absolute;
+    top: -70px;
+    left: -70px;
+    animation: balloon1 2s infinite linear;
+}
+
+@keyframes balloon1 {
+    0%, 50%, 100% {
+        transform-origin: bottom right;
+        transform: rotate(0deg);
+    }
+    25% {
+        transform-origin: bottom right;
+        transform: rotate(3deg);
+    }
+    75% {
+        transform-origin: bottom right;
+        transform: rotate(-3deg);
+    }
+}
+
+.right .balloon_two {
+    position: absolute;
+    top: 170px;
+    right: -65px;
+    z-index: -1;
+    transform: rotate(10deg);
+    animation: balloon2 2s infinite linear;
+}
+
+@keyframes balloon2 {
+    0%, 50%, 100% {
+        transform-origin: bottom left;
+        transform: rotate(10deg);
+    }
+    25% {
+        transform-origin: bottom left;
+        transform: rotate(7deg);
+    }
+    75% {
+        transform-origin: bottom left;
+        transform: rotate(13deg);
+    }
+}
+
+/* ===================== DECORATIONS ===================== */
+.decorate_star {
+    position: absolute;
+    transform: scale(0);
+    background-color: var(--color-black);
+    clip-path: polygon(0 50%, 35% 35%, 50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%);
+    animation: scaleCricle 3s var(--t) forwards,
+               scaleStar 2s 16s infinite ease-in-out;
+}
+
+.decorate_star.star1 { width: 20px; height: 20px; top: 75px;    left: 300px; }
+.decorate_star.star2 { width: 15px; height: 20px; top: 35px;    right: 360px; }
+.decorate_star.star3 { width: 14px; height: 14px; top: 290px;   left: 630px; }
+.decorate_star.star4 { width: 18px; height: 18px; bottom: 60px; left: 35px; }
+.decorate_star.star5 { width: 16px; height: 18px; bottom: 140px; left: 500px; }
+
+@keyframes scaleStar {
+    25% { transform: scale(0.8); }
+    50% { transform: scale(1.1); }
+}
+
+.decorate_bottom {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+}
+
+.decorate_flower--one {
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    transform: scale(0);
+    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+}
+
+.decorate_flower--two {
+    position: absolute;
+    top: 225px;
+    left: 540px;
+    transform: scale(0);
+    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+}
+
+.decorate_flower--three {
+    position: absolute;
+    top: 150px;
+    right: 235px;
+    transform: scale(0);
+    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+}
+
+.smiley__icon {
+    position: absolute;
+    bottom: 180px;
+    left: 600px;
+    transform: scale(0);
+    animation: scaleCricle 3s 15s forwards ease-in-out;
+}
+
+/* ===================== LETTER BOX ===================== */
+.box__letter {
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    width: 100%; height: 100%;
+    z-index: 10;
+    display: none;
+    overflow-y: auto;
+}
+
+.box__letter .letter__border {
+    position: absolute;
+    width: 520px;
+    background-color: var(--color-white);
+    border-radius: 30px;
+    padding: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* Close button */
+.letter__border .close {
+    position: absolute;
+    right: -12px; top: -12px;
+    width: 34px; height: 34px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+    font-size: 1rem;
+    color: #555;
+    transition: background .2s;
+    z-index: 5;
+}
+.letter__border .close:hover { background-color: #ffe0e5; }
+
+/* Inner card */
+.letter__border .letter {
+    width: 100%;
+    background: linear-gradient(160deg, #fff8f0 0%, #fff0f5 100%);
+    border-radius: 20px;
+    padding: 20px 22px 22px;
+    border: 2px dashed #f5c0c8;
+}
+
+/* Title */
+.letter__border .letter .title__letter {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 2.2rem;
+    color: #d45c74;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+.title__letter .fa-solid {
+    margin-left: 6px;
+    font-size: 1.2rem;
+}
+
+/* Content row: gif left, text right */
+.letter__border .letter .content__letter {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+/* LEFT — gif + floating hearts */
+.letter__border .letter .content__letter .left {
+    position: relative;
+    width: 44%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.content__letter .left #heart__letter {
+    opacity: 0;
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(220,80,110,0.18);
+}
+#heart__letter.animationOp { animation: opacityHeart 0.8s 0.5s forwards; }
+
+@keyframes opacityHeart { to { opacity: 1; } }
+
+/* mewmew cat — below gif on desktop */
+.content__letter .left #mewmew {
+    opacity: 0;
+    width: 70px;
+    display: block;
+}
+#mewmew.animationOp { animation: opacityHeart 0.8s 1s forwards; }
+
+/* Floating hearts scattered around */
+.content__letter .left .heart {
+    position: absolute;
+    opacity: 0;
+}
+.content__letter .left .heart.animation {
+    animation: scaleHeartLetter 1s var(--t) infinite ease-in-out;
+}
+@keyframes scaleHeartLetter {
+    0%        { opacity: 1; transform: scale(0); }
+    10%       { opacity: 1; transform: scale(1.3); }
+    20%       { opacity: 1; transform: scale(0.7); }
+    30%, 100% { opacity: 1; transform: scale(1); }
+}
+.content__letter .left .heart_1 { top: 8px;   left: 8px; }
+.content__letter .left .heart_2 { top: 8px;   right: 8px; }
+.content__letter .left .heart_3 { bottom: 80px; left: 8px; }
+.content__letter .left .heart_4 { bottom: 80px; right: 8px; }
+
+/* RIGHT — love gif + text */
+.content__letter .right {
+    position: relative;
+    width: 56%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content__letter .right .love__img {
+    opacity: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.content__letter .right .love__img img { width: 90px; }
+.love__img.animationOp { animation: opacityHeart 0.8s 0.8s forwards; }
+
+.content__letter .right .text__letter {
+    background: rgba(255,255,255,0.7);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #6b3a4a;
+    border: 1.5px solid #f5c0c8;
+}
+.content__letter .right .text__letter p { margin: 0; }
+
+/* ===================== TABLET (max 900px) ===================== */
+@media screen and (max-width: 900px) {
+    .content .left {
+        padding-left: 40px;
+    }
+    .content .right .image {
+        width: 280px;
+        height: 280px;
+    }
+    .cricle {
+        right: 10px;
+    }
+}
+
+/* ===================== MOBILE (max 658px) ===================== */
+@media screen and (max-width: 658px) {
+
+    /* Flags — both flags scaled down and kept fully inside screen */
+    .flag__birthday {
+        justify-content: space-between;
+        width: 100%;
+        overflow: hidden;
+    }
+    .flag__birthday .flag__left {
+        width: 180px;
+        transform: rotate(-10deg) translate(-10px, 10px);
+    }
+    .flag__birthday .flag__right {
+        width: 180px;
+        transform: rotate(10deg) translate(10px, 10px) scaleX(-1);
+    }
+
+    /* Content stacks vertically */
+    .content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding-top: 1.5rem;
+        padding-bottom: 150px;
+    }
+
+    .content .left {
+        width: 100%;
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .content .right {
+        width: 100%;
+        align-items: center;
+        /* needs extra bottom space so rotating circle doesn't overflow */
+        padding-bottom: 70px;
+    }
+
+    /* Title size */
+    .title {
+        font-size: 2rem;
+        letter-spacing: 4px;
+        align-items: center;
+    }
+
+    /* Hat — drops from above onto top-right corner of title */
+    .title .hat {
+        position: absolute;
+        right: 10px;
+        top: -350px;
+        transform: rotate(-30deg);
+        z-index: 3;
+        animation: topHatMobile 1.5s 7.5s forwards ease;
+    }
+
+    @keyframes topHatMobile {
+        0%   { top: -350px; transform: rotate(-30deg); }
+        70%  { top: -15px;  transform: rotate(-10deg); }
+        85%  { top: -25px;  transform: rotate(-5deg); }
+        100% { top: -18px;  transform: rotate(-15deg); }
+    }
+
+    .title .hat img {
+        width: 65px;
+    }
+
+    /* Date pill */
+    @keyframes dateOfBirth {
+        20%, 40% {
+            width: 0px;
+            height: 0;
+            transform: translateY(0px);
+            opacity: 1;
+            visibility: visible;
+        }
+        45% {
+            transform: translateY(0px);
+            opacity: 1;
+            visibility: visible;
+            width: 260px;
+            height: 0px;
+        }
+        50%, 100% {
+            transform: translateY(0px);
+            opacity: 1;
+            visibility: visible;
+            width: 260px;
+            height: 50px;
+        }
+    }
+
+    /* Button */
+    #btn__letter {
+        margin-top: 17px;
+        width: 200px;
+        padding: 8px 10px;
+        font-size: 1rem;
+    }
+
+    /* Profile circle */
+    .content .right .image {
+        width: 220px;
+        height: 220px;
+        border: 5px solid var(--color-black);
+    }
+
+    /* Name label */
+    .name {
+        padding: 0px 10px;
+        bottom: -14px;
+    }
+
+    .name span {
+        font-size: 1.1rem;
+        margin: 0 10px;
+    }
+
+    /* Balloons on mobile */
+    .right .balloon_one {
+        top: 0px;
+        left: -70px;
+    }
+    .right .balloon_one img { width: 70px !important; }
+
+    .right .balloon_two {
+        top: 120px;
+        right: -55px;
+    }
+    .right .balloon_two img { width: 70px !important; }
+
+    /* ===================================================
+       ROTATING CIRCLE — MOBILE FIX
+       Positioned below the profile image, centered
+    =================================================== */
+    .cricle {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: scale(0);
+        margin-top: 24px;
+        /* Center it horizontally */
+        align-self: center;
+        animation: scaleCricle 3s 15s forwards ease-in-out;
+    }
+
+    /* Stars — keep visible on mobile */
+    .decorate_star.star3 { left: auto; right: 20px; }
+    .decorate_star.star5 { left: 50%; }
+
+    /* Flowers */
+    .decorate_flower--one { top: auto; bottom: 30px; left: 20px; }
+    .decorate_flower--two { top: auto; bottom: 60px; left: auto; right: 20px; }
+    .decorate_flower--three { display: none; }
+
+    .smiley__icon {
+        bottom: 10px;
+        left: auto;
+        right: 10px;
+    }
+
+    /* ===== LETTER BOX MOBILE ===== */
+    .box__letter .letter__border {
+        width: 93vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        border-radius: 24px;
+    }
+
+    .letter__border .letter {
+        padding: 16px 14px 18px;
+        border-radius: 16px;
+    }
+
+    .letter__border .letter .title__letter {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+
+    /* Stack: gif on top, text below */
+    .letter__border .letter .content__letter {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .letter__border .letter .content__letter .left {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .content__letter .left #heart__letter {
+        width: 130px;
+        border-radius: 12px;
+    }
+
+    /* mewmew next to gif on mobile */
+    .content__letter .left #mewmew {
+        width: 65px;
+    }
+
+    /* love gif hidden on mobile (already have mewmew) */
+    .content__letter .right .love__img {
+        display: none;
+    }
+
+    .content__letter .right {
+        width: 100%;
+    }
+
+    .content__letter .right .text__letter {
+        font-size: 1.05rem;
+        padding: 12px 14px;
+        line-height: 1.65;
+    }
+
+    /* Heart positions inside letter on mobile */
+    .content__letter .left .heart_1 { top: 4px;  left: 4px; }
+    .content__letter .left .heart_2 { top: 4px;  right: 4px; }
+    .content__letter .left .heart_3 { bottom: 4px; left: 4px; }
+    .content__letter .left .heart_4 { bottom: 4px; right: 4px; }
+}
